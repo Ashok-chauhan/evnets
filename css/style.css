@@ -1,0 +1,8 @@
+body{
+    background-color: rgba(110, 117, 117, 0.022);
+}
+
+.custom-centered{
+    margin:0 auto;
+    width:400px;
+   }
