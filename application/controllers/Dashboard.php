@@ -89,9 +89,9 @@ class Dashboard extends CI_Controller {
 				
 				$config = array();
 $config['protocol'] = 'smtp';
-$config['smtp_host'] = 'smtp.gmail.com';
-$config['smtp_user'] = 'ashok@whizti.com';
-$config['smtp_pass'] = 'Machine9';
+$config['smtp_host'] = '';
+$config['smtp_user'] = '';
+$config['smtp_pass'] = '';
 $config['smtp_port'] = 25;
 $config['wordwrap'] = TRUE;
 $config['newline'] = "\r\n";
