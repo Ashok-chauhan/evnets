@@ -96,4 +96,19 @@ class Events_model extends CI_Model {
 	}
 
 
+	public function pastevents(){
+		$today = date('Y-m-d');
+		$query = $this->db->get_where('events', array('start_date <'=> $today));
+		return $query->result_array();
+		
+	}
+
+	public function upcomingevents(){
+		$today = date('Y-m-d');
+		$query = $this->db->get_where('events', array('start_date >'=> $today));
+		return $query->result_array();
+		
+	}
+
+
 }

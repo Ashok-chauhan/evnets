@@ -7,7 +7,7 @@
       <th scope="col">Event name</th>
       <th scope="col">Start</th>
       <th scope="col">End</th>
-      <th scope="col">Export</th>
+     
     </tr>
   </thead>
   <tbody>
@@ -20,9 +20,7 @@
         </td>
         <td><?php echo $event['start_date'];?></td>
         <td><?php echo $event['end_date'];?></td>
-        <td> 
-          <a href="<?php echo site_url('dashboard/export/');?>"> Export</a>
-        </td>
+       
     </tr>
     <?php endforeach;?>
   </tbody>

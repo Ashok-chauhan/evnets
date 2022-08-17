@@ -104,11 +104,13 @@
       <div class="navbar-nav">
       
       <?php echo anchor('/dashboard/createevents', 'Add Event','class="nav-link"');?>
+      <?php echo anchor('/dashboard/pastevents', 'Past Event','class="nav-link"');?>
+      <?php echo anchor('/dashboard/upcomingevents', 'Upcoming Event','class="nav-link"');?>
       <?php echo anchor('/users/logout', 'Logout', array('class' => 'nav-link'));?>
        
         <!-- <a class="nav-link" href="<?php //echo anchor('/dashboard/createevents');?>">Add event</a> -->
         <!-- <a class="nav-link" href="<?php //echo $this->config->item('base_url').'users/logout'?>">Logout</a> -->
-        <a class="nav-link disabled">Disabled</a>
+      
       </div>
     </div>
   </div>

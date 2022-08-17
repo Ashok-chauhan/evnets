@@ -6,6 +6,7 @@ class Dashboard extends CI_Controller {
 	public function __construct(){
 		parent::__construct();
 		$this->load->model('events_model');
+		$this->load->model('guests_model');
 		$this->load->helper(array('form', 'url','email'));
    		$this->load->library('form_validation');
 		
@@ -147,5 +148,45 @@ class Dashboard extends CI_Controller {
 			}
 
 		}
+	}
+
+
+	public function export(){
+		$filename = 'guests_'.date('Ymd').'.csv';
+		header("Content-Description: File Transfer");
+		header("Content-Disposition: attachment; filename=$filename");
+		header("Content-Type: application/csv;");
+
+		 $data = $this->guests_model->guests();
+		 $file = fopen('php://output','w');
+		 $header = array("name", "email", "gender","age","council_number","council_state","phone","date");
+		fputcsv($file, $header);
+		foreach($data as $key=>$line){
+			fputcsv($file, $line);
+		}
+		fclose($file);
+		exit;
+		
+
+	}
+
+	public function pastevents(){
+		$events = $this->events_model->pastevents();
+		
+		$data['events'] = $events;
+		$this->load->view('templates/header');
+		$this->load->view('dashboard/past_future_events', $data);
+		$this->load->view('templates/footer');
+
+	}
+
+	public function upcomingevents(){
+		$events = $this->events_model->upcomingevents();
+		
+		$data['events'] = $events;
+		$this->load->view('templates/header');
+		$this->load->view('dashboard/past_future_events', $data);
+		$this->load->view('templates/footer');
+
 	}
 }
