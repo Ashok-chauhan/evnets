@@ -42,8 +42,36 @@ class Dashboard extends CI_Controller {
 	public function createevent(){
 		
 		$events = $this->events_model->create_events();
-		//print_r($events);
+		
 		if($events){
+			//send email to guest_registration
+
+			$config = array();
+				$config['protocol'] = 'smtp';
+				$config['smtp_host'] = 'smtpout.secureserver.net';
+				$config['smtp_user'] = 'ashok@embin.com';
+				$config['smtp_pass'] = 'embinMachine9';
+				$config['smtp_port'] = 587;
+				$config['wordwrap'] = TRUE;
+				$config['newline'] = "\r\n";
+				$config['crlf'] = "\r\n";
+				$config['charset'] = 'iso-8859-1';
+				$config['priority'] = 1;    
+				//$config['tls'] = false;
+				$this->email->initialize($config);
+
+
+				$this->email->from('ashok@embin.com', 'Ashok');
+				$this->email->to('ashok@whizti.com');
+				$this->email->cc('ashok@embin.com');
+				//$this->email->bcc('them@their-example.com');
+
+				$this->email->subject('Email Test');
+				$this->email->message('You have regiseter successfuly !, click link to regiseter '. $events);
+
+				$this->email->send();
+				//echo $this->email->print_debugger();
+
 			redirect('dashboard/index');
 		}
 		
@@ -72,6 +100,7 @@ class Dashboard extends CI_Controller {
 	}
 
 	public function guests(){
+		
 		$this->load->helper('form');
    		$this->load->library('form_validation');
 		
@@ -87,38 +116,34 @@ class Dashboard extends CI_Controller {
 			$response = $this->events_model->guest_registration();
 			if($response){
 				
-				$config = array();
-$config['protocol'] = 'smtp';
-$config['smtp_host'] = '';
-$config['smtp_user'] = '';
-$config['smtp_pass'] = '';
-$config['smtp_port'] = 25;
-$config['wordwrap'] = TRUE;
-$config['newline'] = "\r\n";
-$config['crlf'] = "\r\n";
-$config['charset'] = 'iso-8859-1';
-$config['priority'] = 1;    
-//$config['tls'] = false;
-$this->email->initialize($config);
+			$config = array();
+			$config['protocol'] = 'smtp';
+			$config['smtp_host'] = 'smtpout.secureserver.net';
+			$config['smtp_user'] = 'ashok@embin.com';
+			$config['smtp_pass'] = 'embinMachine9';
+			$config['smtp_port'] = 587;
+			//$config['smtp_port'] = 465;
+			$config['wordwrap'] = TRUE;
+			$config['newline'] = "\r\n";
+			$config['crlf'] = "\r\n";
+			$config['charset'] = 'iso-8859-1';
+			$config['priority'] = 1;    
+			$this->email->initialize($config);
+			$this->email->from('ashok@embin.com', 'ashok');
+			$this->email->to($this->input->post('email'));
+			//$this->email->cc('another@another-example.com');
+			//$this->email->bcc('them@their-example.com');
 
+			$this->email->subject('Email Test');
+			$this->email->message('You have regiseter successfuly !');
 
-				$this->email->from('ashok@whizti.com', 'Kumar');
-				$this->email->to($this->input->post('email'));
-				//$this->email->cc('another@another-example.com');
-				//$this->email->bcc('them@their-example.com');
+			$this->email->send();
+			//echo $this->email->print_debugger();
 
-				$this->email->subject('Email Test');
-				$this->email->message('You have regiseter successfuly !');
-
-				$this->email->send();
-				echo $this->email->print_debugger();
-
-				
-
-
-				// $this->load->view('templates/header');
-				// $this->load->view('dashboard/success');
-				// $this->load->view('templates/footer');
+		
+				$this->load->view('templates/header');
+				$this->load->view('dashboard/success');
+				$this->load->view('templates/footer');
 			}
 
 		}

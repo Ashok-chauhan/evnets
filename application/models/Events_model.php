@@ -74,8 +74,9 @@ class Events_model extends CI_Model {
 		$eventdata['email_header'] = $email_header;
 		$eventdata['email_footer'] = $email_footer;
 
-
-        return $this->db->insert('events', $eventdata);
+		if($this->db->insert('events', $eventdata)){
+			return $url;
+		}
 
     }
 

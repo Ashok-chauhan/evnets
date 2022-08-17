@@ -46,7 +46,7 @@
 
     
     <!-- col-md-4 col-md-offset-4 -->
-    <form method="POST" action="/ci3/dashboard/guests" onsubmit="process(event)">
+    <form method="POST" action="<?php echo base_url().'dashboard/guests';?>" onsubmit="process(event)">
 
 <div class="custom-centered p-3">
     <input type="hidden" name="slug" value=" <?php echo $event[0]['slug'];?>">

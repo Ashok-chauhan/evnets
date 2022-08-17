@@ -7,7 +7,7 @@
 <?php endif;?>
 
 
-  <form method="POST" action="/ci3/users/authenticate">
+  <form method="POST" action="<?php echo base_url().'users/authenticate';?>">
     <img class="mb-4" src="http://embin.com/images/sml-logo.png" alt="" width="280" height="76">
     <h1 class="h3 mb-3 fw-normal">Please sign in</h1>
 

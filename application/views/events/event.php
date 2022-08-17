@@ -46,7 +46,7 @@
 
     
     <!-- col-md-4 col-md-offset-4 -->
-    <form method="POST" action="/ci3/events/register" onsubmit="process(event)">
+    <form method="POST" action="<?php echo base_url().'events/register';?>" onsubmit="process(event)">
 
 <div class="custom-centered p-3">
     <input type="hidden" name="slug" value=" <?php echo $this->uri->segment(3);?>">

@@ -11,7 +11,7 @@ body {
 }
   </style>
 <main class="form-signin m-auto">
-  <h1>Add Evnet</h1>
+  <h1>Add Event</h1>
 <form method="POST" action="<?php echo base_url().'dashboard/createevent';?>" enctype="multipart/form-data">
   
   <label for="event_name" class="form-label">Event name</label>

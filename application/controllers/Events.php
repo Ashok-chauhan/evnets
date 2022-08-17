@@ -22,7 +22,7 @@ class Events extends CI_Controller {
     }
 
     public function register(){
-
+        $this->load->helper('email');
         $this->load->helper('form');
         $this->load->library('form_validation');
         $eventData = $this->events_model->get_events(trim($this->input->post('slug')));
@@ -40,36 +40,7 @@ class Events extends CI_Controller {
          //regiseter
          $response = $this->events_model->guest_registration();
          if($response){
-             
-             $config = array();
-$config['protocol'] = 'smtp';
-$config['smtp_host'] = 'smtp.gmail.com';
-$config['smtp_user'] = 'ashok@whizti.com';
-$config['smtp_pass'] = 'Machine9';
-$config['smtp_port'] = 25;
-$config['wordwrap'] = TRUE;
-$config['newline'] = "\r\n";
-$config['crlf'] = "\r\n";
-$config['charset'] = 'iso-8859-1';
-$config['priority'] = 1;    
-//$config['tls'] = false;
-$this->email->initialize($config);
-
-
-             $this->email->from('ashok@whizti.com', 'Kumar');
-             $this->email->to($this->input->post('email'));
-             //$this->email->cc('another@another-example.com');
-             //$this->email->bcc('them@their-example.com');
-
-             $this->email->subject('Email Test');
-             $this->email->message('You have regiseter successfuly !'.$pageurl);
-
-             //$this->email->send();
-            
-            // echo $this->email->print_debugger();
-
-             
-
+          
 
              $this->load->view('templates/header');
              $this->load->view('events/success');
