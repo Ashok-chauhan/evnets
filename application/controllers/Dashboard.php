@@ -49,9 +49,9 @@ class Dashboard extends CI_Controller {
 
 			$config = array();
 				$config['protocol'] = 'smtp';
-				$config['smtp_host'] = 'smtpout.secureserver.net';
-				$config['smtp_user'] = 'ashok@embin.com';
-				$config['smtp_pass'] = 'embinMachine9';
+				$config['smtp_host'] = '';
+				$config['smtp_user'] = '';
+				$config['smtp_pass'] = '';
 				$config['smtp_port'] = 587;
 				$config['wordwrap'] = TRUE;
 				$config['newline'] = "\r\n";
@@ -62,9 +62,9 @@ class Dashboard extends CI_Controller {
 				$this->email->initialize($config);
 
 
-				$this->email->from('ashok@embin.com', 'Ashok');
-				$this->email->to('ashok@whizti.com');
-				$this->email->cc('ashok@embin.com');
+				$this->email->from('', 'Ashok');
+				$this->email->to('');
+				$this->email->cc('');
 				//$this->email->bcc('them@their-example.com');
 
 				$this->email->subject('Email Test');
